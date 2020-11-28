@@ -13,15 +13,15 @@ This project uses web scraping and machine learning techniques to predict
 Rolls-Royce plc. share price movement from articles on the
 [Reuters news website](https://www.reuters.com/companies/RR.L/news). The program
 is split into four scripts. The
-[rr_predictor.py](rrpredictor\rrpredictor.py) script is the main CLI for the
+[rr_predictor.py](rrpredictor/rrpredictor.py) script is the main CLI for the
 program where the user can select the action for the program to perform. The
-[monitor_and_predict.py](rrpredictor\monitor_and_predict.py) script contains the
+[monitor_and_predict.py](rrpredictor/monitor_and_predict.py) script contains the
 function that checks the Reuters website for the latest article and then uses
 the saved machine learning model to predict the share price movement based on
-the article. The [create_training_data.py](rrpredictor\create_training_data.py)
+the article. The [create_training_data.py](rrpredictor/create_training_data.py)
 script contains the function that allows the user to update the data used to
 train the machine learning model by scraping the Reuters website. The
-[train_and_test.py](rrpredictor\train_and_test.py) script contains the function
+[train_and_test.py](rrpredictor/train_and_test.py) script contains the function
 that allows the user to retrain the machine learning model.  
 
 More detail on each script is given below after usage.
@@ -41,7 +41,7 @@ packages by running:
     conda env create -f environment.yml
 
 Then, to run the program, navigate to rrpredictor directory (the directory that
-contains [rr_predictor.py](rrpredictor\rrpredictor.py)) and run:
+contains [rr_predictor.py](rrpredictor/rrpredictor.py)) and run:
 
     python rr_predictor.py
 
@@ -49,13 +49,13 @@ Then follow the instructions given.
 
 ## Script detail
 
-### [rr_predictor.py](rrpredictor\rrpredictor.py)
+### [rr_predictor.py](rrpredictor/rrpredictor.py)
 
 This script is the main CLI for the program. The user can select which action
 for the program to perform from the given list. Each function from the other
 scripts is imported here.
 
-### [monitor_and_predict.py](rrpredictor\monitor_and_predict.py)
+### [monitor_and_predict.py](rrpredictor/monitor_and_predict.py)
 
 This script contains a function that checks the Reuters website every 10 minutes
 for the latest Rolls-Royce news article. It uses the saved machine learning
@@ -70,19 +70,19 @@ Key features:
     [Rolls-Royce plc. news page on Reuters](https://www.reuters.com/companies/RR.L/news).
     Beautiful Soup was used here because it's quick and lightweight compared to
     Selenium which is used in
-    [create_training_data.py](rrpredictor\create_training_data.py).
+    [create_training_data.py](rrpredictor/create_training_data.py).
 -   **Prediction:** The function uses the TF-IDF vectorizer and
     classifier, created and saved in
-    [train_and_test.py](rrpredictor\train_and_test.py), to calculate the TF-IDF
+    [train_and_test.py](rrpredictor/train_and_test.py), to calculate the TF-IDF
     vector of the latest article and then from this predict it's classification.    
 
-### [create_training_data.py](rrpredictor\create_training_data.py)
+### [create_training_data.py](rrpredictor/create_training_data.py)
 
 This script contains a function that extracts the 240 most recent Rolls-Royce
 news articles from the Reuters website, calculates the percentage
 change in share price across each article's publish date and assigns a
 classification to each article (increase, neutral, decrease). This data is used
-in [train_and_test.py](rrpredictor\train_and_test.py) to train and test the
+in [train_and_test.py](rrpredictor/train_and_test.py) to train and test the
 TF-IDF vectorizer and classifier.
 
 Key features:
@@ -95,7 +95,7 @@ Key features:
     load more articles. Furthermore, each article's date is also added using
     JavaScript. Therefore, Selenium is used as it drives a browser and thus
     allows JavaScript to run. Requests, which is used in
-    [monitor_and_predict.py](rrpredictor\monitor_and_predict.py), will only get
+    [monitor_and_predict.py](rrpredictor/monitor_and_predict.py), will only get
     the site's static HTML which does not include content added to the page
     using JavaScript.
 -   **Memory utilisation monitoring:** Using Selenium can be memory intensive,
@@ -114,12 +114,12 @@ Key features:
     This is beneficial as this method will be run for each iteration of the
     loop.
 
-### [train_and_test.py](rrpredictor\train_and_test.py)
+### [train_and_test.py](rrpredictor/train_and_test.py)
 
 This script contains a function that trains and tests the TF-IDF vectorizer and
-classifier used in [monitor_and_predict.py](rrpredictor\monitor_and_predict.py)
+classifier used in [monitor_and_predict.py](rrpredictor/monitor_and_predict.py)
 using the data created in
-[create_training_data.py](rrpredictor\create_training_data.py). The machine
+[create_training_data.py](rrpredictor/create_training_data.py). The machine
 learning library used is [scikit-learn](https://scikit-learn.org/stable/).
 
 Key features:
@@ -231,4 +231,4 @@ arbitrarily chosen.
 Below is the confusion matrix generated from the saved classifier's test
 results using the test data.
 
-![Confusion matrix](images\Confusion_matrix.png?raw=true "Confusion matrix")
+![Confusion matrix](images/Confusion_matrix.png?raw=true "Confusion matrix")
