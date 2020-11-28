@@ -33,7 +33,7 @@ there is no need to collect data and train the model before setting the
 program to monitor and predict unless the user wishes to update the data used to
 train the model.  
 
-This program has been created and tested on Python 3.8.5. At the time of
+This program has been created and tested with Python 3.8.5. At the time of
 writing, some packages are only available through Conda for this python version.
 To ensure the program runs correctly, create an environment with the required
 packages by running:
