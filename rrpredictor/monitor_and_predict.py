@@ -1,5 +1,7 @@
 import ctypes
 import time
+import tkinter as tk
+from tkinter import messagebox
 
 import requests
 from bs4 import BeautifulSoup
@@ -72,10 +74,10 @@ def monitor_and_predict():
                 title, new_article_URL, pred.title()))
 
             # Alert user of new latest article
-            ctypes.windll.user32.MessageBoxW(
-                0, "Latest article: {}\nPrediction: {}".format(
-                    title, pred.title()),
-                "RR Predictor", 0)
+            root = tk.Tk().withdraw()
+            messagebox.showinfo(
+                "RR Predictor", "Latest article: {}\nPrediction: {}".format(
+                    title, pred.title()))
 
         # Store article URL for comparison in next loop
         old_article_URL = new_article_URL
