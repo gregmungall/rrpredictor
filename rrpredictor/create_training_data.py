@@ -88,7 +88,8 @@ def create_training_data():
         pass
 
     # Create training data csv and prepare for writing
-    training_data_csv = open('../data/training_data.csv', 'a', newline='')
+    training_data_csv = open('../data/training_data.csv',
+                             'a', newline='', encoding='cp1252')
     training_data_writer = csv.writer(training_data_csv)
 
     # Loop to extract relevent text from each article
